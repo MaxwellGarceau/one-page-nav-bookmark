@@ -1,0 +1,183 @@
+:root {
+  --opn-menu-transitiion-time: .5s;
+	--opn-nav-width: 230px;
+	--opn-primary-color: #ffffff;
+  --opn-secondary-color: #000000;
+	--opn-z-index: 20;
+}
+
+/* 1370px content wrap breakpoint (Content width (1100px) + Navigation Width (230px) + Site global padding (40px) = 1370px) */
+
+/**
+ * Only applies when admin bar is active
+ */
+body.admin-bar .one-page-nav {
+  padding-top: 32px;
+}
+@media screen and (max-width: 782px) {
+  body.admin-bar .one-page-nav {
+    padding-top: 46px;
+  }
+}
+
+body.one-page-nav-active {
+	padding-left: var(--opn-nav-width);
+	transition: padding var(--opn-menu-transitiion-time) ease-in-out;
+}
+
+.one-page-nav {
+	overflow: hidden;
+  overflow-y: scroll;
+	width: var(--opn-nav-width);
+	transition: width var(--opn-menu-transitiion-time) ease-in-out;
+	left: 0;
+	list-style: none;
+	margin: 0;
+	position: fixed;
+	z-index: var(--opn-z-index);
+	top: 0;
+	padding-left: 0;
+  padding-bottom: calc(50px + 32px); /* Featured song + close button */
+	height: 100%;
+	background-color: var(--opn-secondary-color);
+}
+.one-page-nav:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 32px;
+  background-color: #fff;
+}
+
+body.one-page-nav-active.one-page-nav-hidden {
+	padding-left: 0;
+}
+
+body.one-page-nav-active.one-page-nav-hidden .one-page-nav,
+body.one-page-nav-active.one-page-nav-hidden .one-page-nav-trigger.opn-close {
+	width: 0;
+}
+
+@media (max-width: 1370px) {
+  /**
+   * Navigation now stretches over page instead of pushing page content
+   */
+  body.one-page-nav-active {
+    padding-left: 0;
+  }
+}
+
+.one-page-nav-trigger {
+  position: fixed;
+	color: #fff;
+  z-index: var(--opn-z-index);
+  font-size: 34px;
+  /* top: calc(100% - 82px); */
+  bottom: 50px; /* Featured song height */
+  left: 0;
+  width: 100%;
+  max-width: 230px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 32px;
+}
+
+.opn-description {
+	font-size: 14px;
+	color: var(--opn-secondary-color);
+	background-color: var(--opn-primary-color);
+	padding: 10px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 32px;
+}
+
+.opn-open {
+  transition: all .25s ease-in-out;
+  transition-delay: .4s;
+  opacity: 1;
+  max-width: 180px;
+}
+body:not(.one-page-nav-hidden) .opn-open {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+.opn-close {
+  left: 0;
+  transition: width var(--opn-menu-transitiion-time) ease-in-out;
+  width: var(--opn-nav-width);;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.one-page-nav-trigger:hover,
+.one-page-nav-trigger:focus {
+	cursor: pointer;
+}
+
+.one-page-nav .sub-menu {
+	list-style: none;
+	margin-top: 2px;
+	margin-bottom: 0;
+	padding-left: 0;
+}
+/* Quick fix for nested item styling */
+.one-page-nav .sub-menu > li > a {
+	padding-left: 40px;
+  text-transform: capitalize;
+}
+
+.one-page-nav li {
+	margin-bottom: 2px;
+}
+
+/****************************
+ * Link Styling
+ ****************************/
+
+.one-page-nav a {
+	transition: all .1s ease-in-out;
+	letter-spacing: .05rem;
+	display: block;
+	font-size: 14px;
+	padding: 5px 10px;
+	padding-left: 20px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+/****************************
+ ** Link Styling
+ ****************************/
+.one-page-nav a:hover,
+.one-page-nav a:focus,
+.one-page-nav .current a {
+  outline: none;
+  text-decoration: none;
+}
+
+.one-page-nav a {
+  background: var(--opn-secondary-color);
+  color: var(--opn-primary-color);
+}
+
+.one-page-nav .current a {
+  background: var(--opn-primary-color);
+  color: var(--opn-secondary-color);
+}
+
+@media (hover: hover) {
+  .one-page-nav a:hover {
+  	background: var(--opn-primary-color);
+  	color: var(--opn-secondary-color);
+  }
+}
