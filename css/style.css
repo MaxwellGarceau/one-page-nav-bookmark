@@ -6,6 +6,21 @@
 	--opn-z-index: 20;
 }
 
+.one-page-nav::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 5px;
+}
+
+.one-page-nav::-webkit-scrollbar-track {
+  margin-bottom: calc(50px + 32px); /* Featured song + close button */
+}
+
+.one-page-nav::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, .3);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .3);
+}
+
 /* 1370px content wrap breakpoint (Content width (1100px) + Navigation Width (230px) + Site global padding (40px) = 1370px) */
 
 /**
